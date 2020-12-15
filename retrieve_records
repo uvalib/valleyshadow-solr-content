@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SOLR_URL_BASE="http://libsvr40.lib.virginia.edu:8080/solr/valley"
+start=0
+
+mkdir -p data/input
+echo "downloading records via curl"
+while [[ $start -lt 280000 ]]
+do 
+    echo "getting 10000 records starting at record number $start"
+    curl -s "$SOLR_URL_BASE/select/?q=*%3A*&start=${start}&rows=10000&indent=on" > data/input/valley_data_${start}.xml
+    let start=$start+10000
+done
+
+

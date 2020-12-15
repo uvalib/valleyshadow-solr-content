@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#JAVA=/lib_content23/java_1.8.0/jdk1.8.0/bin/java
+JAVA=java
+
+mkdir -p data/add_doc
+
+echo "transforming all records via XSLT"
+$JAVA  -jar Saxon-HE-9.9.1-6.jar -o:data/add_doc/ data/input/ ./valley_output_2_adddoc.xsl
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#NEW_SOLR_URL="http://libsvr40.lib.virginia.edu:8986/solr/valley_core"
+#NEW_SOLR_URL="http://10.130.109.110:8080/solr/valley"
+NEW_SOLR_URL="http://10.130.110.206:8080/solr/valley"
+
+for file in data/add_doc/*.xml
+do 
+    echo $file
+    java -Durl=$NEW_SOLR_URL/update -jar post.jar  ${file}
+done
+
